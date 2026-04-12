@@ -5,17 +5,7 @@
   grid-template-columns: 1fr 300px;
   gap: var(--spacing-12);
   padding: var(--spacing-8);
-  /* MAIN CONTENT STARTS HIGH FOR IMMEDIATE FOCUS */
   padding-top: 40px;
-}
-
-@media (max-width: 900px) {
-  .mainLayout {
-    grid-template-columns: 1fr;
-    padding: var(--spacing-6) var(--spacing-4);
-    padding-top: 80px;
-    gap: var(--spacing-8);
-  }
 }
 
 .container {
@@ -70,14 +60,45 @@
   word-break: break-word;
 }
 
-.content h1, .content h2, .content h3 {
+@media (max-width: 768px) {
+  .content {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.content h1,
+.content h2,
+.content h3 {
   color: #ffffff;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
 
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 1.75rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content h3 {
+    font-size: 1.25rem;
+  }
+}
+
 .content p {
   margin-bottom: 1.5rem;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  margin: 1rem 0;
 }
 
 .content pre {
@@ -87,6 +108,14 @@
   border: 1px solid var(--outline-variant);
   margin: 2rem 0;
   overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .content pre {
+    padding: 16px !important;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+  }
 }
 
 .content code {
@@ -102,7 +131,8 @@
   padding: 0;
 }
 
-.content ul, .content ol {
+.content ul,
+.content ol {
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -118,8 +148,10 @@
   border: 1px solid var(--outline-variant);
   height: fit-content;
   position: sticky;
-  top: 120px; /* Kept lower during sticky scroll to avoid navbar overlap */
-  margin-top: 80px; /* START LOWER than the main content as requested */
+  top: 120px;
+  /* Kept lower during sticky scroll to avoid navbar overlap */
+  margin-top: 80px;
+  /* START LOWER than the main content as requested */
 }
 
 .sidebarTitle {
@@ -163,7 +195,8 @@
   line-height: 1.3;
 }
 
-.loading, .error {
+.loading,
+.error {
   padding-top: 100px;
   text-align: center;
   font-family: var(--font-label);
