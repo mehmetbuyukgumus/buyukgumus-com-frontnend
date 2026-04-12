@@ -1,4 +1,4 @@
-# Buyukgumus.com Frontend
+# buyukgumus.com Frontend
 
 This is the frontend for **buyukgumus.com**, a professional portfolio and blog platform designed with a high-fidelity, editorial-style minimalist aesthetic known as the **"Technical Curator"**.
 
@@ -14,6 +14,7 @@ Built with **Next.js**, this application emphasizes clean typography, glassmorph
 ### Installation
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
