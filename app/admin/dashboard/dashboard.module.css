@@ -1,0 +1,131 @@
+.welcome {
+  margin-bottom: var(--spacing-12);
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: var(--spacing-2);
+}
+
+.welcome p {
+  color: var(--on-surface-variant);
+  font-size: 1.125rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.statCard {
+  background-color: var(--surface-container-low);
+  padding: var(--spacing-8);
+  border-radius: 16px;
+  border: 1px solid var(--outline-variant);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  background-color: var(--surface-container);
+}
+
+.statCard span {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.statCard h3 {
+  margin: 0 0 var(--spacing-2);
+  color: #ffffff;
+}
+
+.statCard p {
+  color: var(--on-surface-variant);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.billingSection {
+  margin-top: var(--spacing-8);
+  padding-top: 0;
+}
+
+.sectionHeader {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionHeader span {
+  font-size: 1.5rem;
+}
+
+.billingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.billingCard {
+  background-color: var(--surface-container-low);
+  padding: var(--spacing-6);
+  border-radius: 20px;
+  border: 1px solid var(--outline-variant);
+  display: flex;
+  flex-direction: column;
+}
+
+.billingHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--spacing-4);
+  color: var(--on-surface-variant);
+}
+
+.billingHeader span {
+  font-size: 1.25rem;
+}
+
+.billingHeader h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.billingValue {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: var(--spacing-1);
+}
+
+.billingLabel {
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+  margin-bottom: var(--spacing-4);
+}
+
+.progressTrack {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 2px;
+}

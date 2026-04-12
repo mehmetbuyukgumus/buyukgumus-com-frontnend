@@ -1,0 +1,110 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-8);
+}
+
+.header {
+  margin-bottom: var(--spacing-12);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: var(--spacing-6);
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-2);
+  display: block;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.links {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.liveBtn, .githubBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.liveBtn {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.githubBtn {
+  background-color: var(--surface-container-high);
+  color: #ffffff;
+  border: 1px solid var(--outline-variant);
+}
+
+.sectionTitle {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  margin-bottom: var(--spacing-4);
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.techTag {
+  padding: 6px 12px;
+  background-color: var(--surface-container-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: 6px;
+  color: var(--on-surface);
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--outline-variant);
+}
+
+.stats {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}

@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+build
+.git
+*.log
+.env.development
+.env.development.local
+.env.test.local
+.env.local
+# Note: We do NOT ignore .env.production because Next.js needs it during 'npm run build' inside Stage 2

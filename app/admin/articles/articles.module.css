@@ -1,0 +1,153 @@
+/* 
+  --------------------------------------------------------------------------
+  ARTICLES ARCHIVE & EDITOR STYLES
+  --------------------------------------------------------------------------
+  Targets the MDEditor internal classes using :global to clean up page.js
+  --------------------------------------------------------------------------
+*/
+
+.editorContainer :global(.w-md-editor) {
+  background-color: #0d1117 !important;
+  border: none !important;
+  min-height: 850px !important;
+}
+
+.editorContainer :global(.w-md-editor-content) {
+  height: 100% !important;
+}
+
+/* 
+  SYNCHRONIZED SYNTAX HIGHLIGHTING (GITHUB README STYLE)
+  --------------------------------------------------------------------------
+  Making the textarea text transparent so we ONLY see the highlighted layer.
+  Ensuring identical typography for perfect alignment to avoid 'ghosting'.
+*/
+
+.editorContainer :global(.w-md-editor-text-input),
+.editorContainer :global(.w-md-editor-text),
+.editorContainer :global(.w-md-editor-content textarea) {
+  color: #ffffff !important;
+  /* GÜÇLÜ VE NET BEYAZ MÜREKKEP */
+  caret-color: #ffffff !important;
+  background: transparent !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 1.2rem !important;
+  line-height: 1.9 !important;
+  padding: 30px !important;
+  font-family: var(--font-mono, "Fira Code", monospace) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  /* Force fill width */
+  height: 100% !important;
+  /* Force fill full height (850px) */
+  min-height: 850px !important;
+}
+
+.editorContainer :global(.w-md-editor-text-pre) {
+  /* GÖLGEYİ VE ÇİFT GÖRMEYİ ENGELLEMEK İÇİN BU KATMANI KAPATIYORUZ */
+  display: none !important;
+}
+
+/* Ensure tokens (colors) are preserved but default text stays white */
+.editorContainer :global(.w-md-editor-text-pre span) {
+  /* Only colored tokens should have distinct colors; untokenized text stays white */
+  color: inherit;
+}
+
+/* Hide all preview/live UI traces */
+.editorContainer :global(.w-md-editor-toolbar-child [data-name="preview"]),
+.editorContainer :global(.w-md-editor-toolbar-child [data-name="live"]),
+.editorContainer :global(.w-md-editor-preview) {
+  display: none !important;
+}
+
+/* 
+  PREMIUM WEBKIT SCROLLBAR 
+  --------------------------------------------------------------------------
+  Making the long manuscript navigation smooth and stylish.
+*/
+
+.editorContainer :global(.w-md-editor-content),
+.editorContainer :global(.w-md-editor-content textarea) {
+  overflow-y: auto !important;
+  /* Enable vertical scroll */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Chrome, Edge, and Safari (Webkit) */
+.editorContainer :global(.w-md-editor-content::-webkit-scrollbar),
+.editorContainer :global(.w-md-editor-content textarea::-webkit-scrollbar) {
+  width: 8px;
+  /* Thickness of the scrollbar */
+}
+
+.editorContainer :global(.w-md-editor-content::-webkit-scrollbar-track),
+.editorContainer :global(.w-md-editor-content textarea::-webkit-scrollbar-track) {
+  background: rgba(0, 0, 0, 0.2);
+  /* Track (back lane) */
+  border-radius: 10px;
+}
+
+.editorContainer :global(.w-md-editor-content::-webkit-scrollbar-thumb),
+.editorContainer :global(.w-md-editor-content textarea::-webkit-scrollbar-thumb) {
+  background: rgba(255, 255, 255, 0.1);
+  /* Handle (the traveler) */
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.editorContainer :global(.w-md-editor-content::-webkit-scrollbar-thumb:hover),
+.editorContainer :global(.w-md-editor-content textarea::-webkit-scrollbar-thumb:hover) {
+  background: rgba(255, 255, 255, 0.25);
+  /* Glow on hover */
+  background-clip: padding-box;
+}
+
+.titleInput, .excerptInput {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+.titleInput {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.excerptInput {
+  font-size: 1.1rem;
+  color: var(--on-surface-variant);
+  margin-bottom: 2rem;
+  resize: none;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--outline-variant);
+  padding-bottom: 1rem;
+}
+
+.formCard {
+  background: var(--surface-container);
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid var(--outline-variant);
+  display: flex;
+  flex-direction: column;
+}
+
+.manuscriptItem {
+  background: var(--surface-container-low);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--outline-variant);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
