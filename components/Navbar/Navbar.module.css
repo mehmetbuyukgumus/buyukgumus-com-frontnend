@@ -23,6 +23,12 @@
   gap: var(--spacing-8);
 }
 
+@media (max-width: 768px) {
+  .logoGroup {
+    gap: var(--spacing-4);
+  }
+}
+
 .logo {
   font-size: 1.25rem;
   font-weight: 800;

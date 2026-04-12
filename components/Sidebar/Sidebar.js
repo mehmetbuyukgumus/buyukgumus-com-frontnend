@@ -10,7 +10,7 @@ export default function Sidebar() {
           <img src="/assets/darkpp.png" alt="Mehmet Buyukgumus" />
         </div>
         <h1 className={styles.name}>Mehmet Büyükgümüş</h1>
-        <p className={styles.role}>Struggling...</p>
+        <p className={styles.role}>He is hanging in there.</p>
       </div>
       <div className={styles.social}>
         <div className={styles.iconGroup}>
