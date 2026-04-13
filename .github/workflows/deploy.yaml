@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,7 +26,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         with:
           branches: |
-            ['main']
+            ["main"]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -36,21 +37,20 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push Docker Image
-        # Sadece yeni bir release varsa çalışır
-        if: steps.semantic.outputs.new_release_published == 'true'
-        uses: docker/build-push-action@v6  # v4 yerine v6 (En günceli)
+        if: github.event_name == 'workflow_dispatch' || steps.semantic.outputs.new_release_published == 'true'
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
             mehmetbuyukgumus/buyukgumus-com-frontend:latest
-            mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version }}
+            mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version || 'latest' }}
 
       - name: Deploy to CapRover
-        if: steps.semantic.outputs.new_release_published == 'true'
+        if: github.event_name == 'workflow_dispatch' || steps.semantic.outputs.new_release_published == 'true'
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: ${{ secrets.CAPROVER_SERVER }}
           token: ${{ secrets.CAPROVER_TOKEN }}
           app: 'buyukgumus-frontend'
-          image: mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version }}
+          image: mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version || 'latest' }}
