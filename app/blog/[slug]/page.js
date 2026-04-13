@@ -12,25 +12,13 @@ export default function BlogDetail() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
-  const [otherArticles, setOtherArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [articleRes, allRes] = await Promise.all([
-          fetch(`${apiUrl}/articles/${slug}`, { cache: 'no-store' }),
-          fetch(`${apiUrl}/articles/`, { cache: 'no-store' }),
-        ]);
+        const articleRes = await fetch(`${apiUrl}/articles/${slug}`, { cache: 'no-store' });
         const articleData = await articleRes.json();
-        const allData = await allRes.json();
-
         setArticle(articleData);
-        setOtherArticles(
-          [...allData]
-            .filter((a) => a.slug !== slug && a.is_published)
-            .sort((a, b) => b.id - a.id) // THE MOST RELIABLE WAY: NEWEST ID = TOP
-        );
       } finally {
         setLoading(false);
       }
@@ -62,24 +50,6 @@ export default function BlogDetail() {
           </ReactMarkdown>
         </div>
       </article>
-
-      <aside className={styles.rightSidebar}>
-        <h3 className={styles.sidebarTitle}>OTHER ENTRIES</h3>
-        <div className={styles.sidebarList}>
-          {otherArticles.map((item) => (
-            <Link
-              key={item.id}
-              href={`/blog/${item.slug}`}
-              className={styles.sidebarItem}
-            >
-              <span className={styles.sidebarDate}>
-                {new Date(item.created_at).toLocaleDateString()}
-              </span>
-              <h4 className={styles.sidebarItemTitle}>{item.title}</h4>
-            </Link>
-          ))}
-        </div>
-      </aside>
     </div>
   );
 }
