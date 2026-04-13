@@ -37,7 +37,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push Docker Image
-        if: github.event_name == 'workflow_dispatch' || steps.semantic.outputs.new_release_published == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -47,7 +46,6 @@ jobs:
             mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version || 'latest' }}
 
       - name: Deploy to CapRover
-        if: github.event_name == 'workflow_dispatch' || steps.semantic.outputs.new_release_published == 'true'
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: ${{ secrets.CAPROVER_SERVER }}
