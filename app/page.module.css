@@ -187,3 +187,10 @@
   margin-top: var(--spacing-4);
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .articleExcerpt {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}

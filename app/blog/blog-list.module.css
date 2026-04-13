@@ -96,10 +96,23 @@
   margin-bottom: var(--spacing-3);
 }
 
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+}
+
 .excerpt {
   color: var(--on-surface-variant);
   line-height: 1.6;
   margin-bottom: var(--spacing-6);
+}
+
+@media (max-width: 768px) {
+  .excerpt {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
 }
 
 .readMore {
