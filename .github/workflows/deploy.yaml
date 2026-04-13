@@ -50,5 +50,5 @@ jobs:
         with:
           server: ${{ secrets.CAPROVER_SERVER }}
           token: ${{ secrets.CAPROVER_TOKEN }}
-          app: 'buyukgumus-frontend'
+          app: 'www'
           image: mehmetbuyukgumus/buyukgumus-com-frontend:${{ steps.semantic.outputs.new_release_version || 'latest' }}
