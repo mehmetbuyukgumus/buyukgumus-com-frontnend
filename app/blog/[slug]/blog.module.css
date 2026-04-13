@@ -47,29 +47,29 @@
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.1;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
   }
 }
 
 /* MARKDOWN CONTENT STYLING */
 .content {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.75;
   color: #e0e0e0;
   word-break: break-word;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .content {
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -84,17 +84,17 @@
   margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .content h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .content h2 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
 
   .content h3 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 }
 

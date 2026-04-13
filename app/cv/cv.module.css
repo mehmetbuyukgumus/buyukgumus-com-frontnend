@@ -11,7 +11,7 @@
 }
 
 .header {
-  margin-bottom: var(--spacing-24);
+  margin-bottom: var(--spacing-12);
   max-width: 800px;
 }
 
@@ -24,12 +24,12 @@
 }
 
 .name {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: var(--spacing-4);
   letter-spacing: -0.04em;
-  line-height: 0.9;
+  line-height: 1.1;
 }
 
 @media (max-width: 768px) {
@@ -39,7 +39,7 @@
 }
 
 .summary {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--on-surface-variant);
   line-height: 1.4;
   font-weight: 300;

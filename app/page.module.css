@@ -1,14 +1,15 @@
 .hero {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-8);
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
   color: #ffffff;
   max-width: 800px;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
@@ -18,26 +19,31 @@
 }
 
 .highlight {
-  position: relative;
-  display: inline-block;
   color: var(--primary);
   font-weight: 800;
+  display: inline; /* Changed from inline-block to prevent forced group-wrapping */
 }
 
 .vibeText {
   display: block;
-  font-size: 1.125rem;
+  font-size: 0.875rem; /* Reduced from 1.125rem */
   font-weight: 400;
   color: var(--on-surface-variant);
   font-style: italic;
-  margin-top: 8px;
+  margin-top: 4px;
   opacity: 0.8;
   letter-spacing: 0.05em;
   font-family: var(--font-label);
 }
 
+@media (max-width: 768px) {
+  .vibeText {
+    font-size: 0.75rem;
+  }
+}
+
 .section {
-  margin-top: var(--spacing-12);
+  margin-top: var(--spacing-8);
 }
 
 .sectionTitle {
@@ -55,7 +61,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
 }
 
 @media (max-width: 480px) {
@@ -67,7 +73,7 @@
 
 .cvCard {
   background-color: var(--surface-container-low);
-  padding: var(--spacing-8);
+  padding: var(--spacing-6);
   border-radius: 16px;
   border: 1px solid var(--outline-variant);
   transition: all 0.3s ease;
@@ -83,7 +89,7 @@
 
 .cvFlex {
   display: flex;
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
   align-items: center;
 }
 
@@ -139,7 +145,7 @@
 
 .articleCard {
   background-color: var(--surface-container-low);
-  padding: var(--spacing-8);
+  padding: var(--spacing-6);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -168,7 +174,7 @@
 }
 
 .articleTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #ffffff;
   margin: 0;
