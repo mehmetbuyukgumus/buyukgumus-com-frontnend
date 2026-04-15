@@ -1,25 +1,11 @@
-"use client";
-import { useState, useEffect } from "react";
 import styles from "./cv.module.css";
 import TechIcon from "../../components/Icons/TechIcon";
 
-export default function CVPage() {
+export default async function CVPage() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-  const [cv, setCv] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchCV = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/cv/`);
-        const data = await res.json();
-        setCv(data);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCV();
-  }, []);
+  
+  const res = await fetch(`${apiUrl}/cv/`, { next: { revalidate: 0 } });
+  const cv = await res.json();
 
   const sortItems = (items) => {
     if (!items) return [];
@@ -58,9 +44,6 @@ export default function CVPage() {
       </div>
     );
   };
-
-  if (loading)
-    return <div className={styles.container}>Assembling Dossier...</div>;
 
   return (
     <div className={styles.container}>
@@ -110,7 +93,6 @@ export default function CVPage() {
                 .replace(/\s+/g, "")
                 .replace(/\./g, "");
 
-              // 1. registry'den ikonu alalım
               const iconValue = cv?.skill_icons?.[normalizedName];
 
               return (

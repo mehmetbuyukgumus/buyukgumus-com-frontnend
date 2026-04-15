@@ -1,28 +1,15 @@
-"use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./blog-list.module.css";
 
-export default function BlogList() {
+export default async function BlogList() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/articles/`, { cache: "no-store" });
-        const data = await res.json();
-        const sorted = data
-          .filter((a) => a.is_published)
-          .sort((a, b) => b.id - a.id); // Guarantee newest at top
-        setArticles(sorted);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchArticles();
-  }, []);
+  
+  const res = await fetch(`${apiUrl}/articles/`, { next: { revalidate: 0 } });
+  const data = await res.json();
+  
+  const articles = data
+    .filter((a) => a.is_published)
+    .sort((a, b) => b.id - a.id);
 
   return (
     <div className={styles.container}>
@@ -32,9 +19,7 @@ export default function BlogList() {
       </header>
 
       <div className={styles.list}>
-        {loading ? (
-          <p>Decrypting records...</p>
-        ) : articles.length > 0 ? (
+        {articles.length > 0 ? (
           articles.map((article) => (
             <Link
               key={article.id}

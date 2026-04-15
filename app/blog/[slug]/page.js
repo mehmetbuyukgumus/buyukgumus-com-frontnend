@@ -1,49 +1,30 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize from "rehype-sanitize";
 import "highlight.js/styles/github-dark.css";
+import Link from "next/link";
 import styles from "./blog.module.css";
 
-export default function BlogDetail() {
+export default async function BlogDetail({ params }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-  const { slug } = useParams();
-  const [article, setArticle] = useState(null);
-  const [otherArticles, setOtherArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { slug } = params;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [articleRes, allRes] = await Promise.all([
-          fetch(`${apiUrl}/articles/${slug}`, { cache: 'no-store' }),
-          fetch(`${apiUrl}/articles/`, { cache: 'no-store' }),
-        ]);
-        const articleData = await articleRes.json();
-        const allData = await allRes.json();
+  const [articleRes, allRes] = await Promise.all([
+    fetch(`${apiUrl}/articles/${slug}`, { next: { revalidate: 0 } }),
+    fetch(`${apiUrl}/articles/`, { next: { revalidate: 0 } }),
+  ]);
 
-        setArticle(articleData);
-        // GET LAST 5 UNIQUE ARTICLES (EXCLUDING CURRENT)
-        setOtherArticles(
-          [...allData]
-            .filter((a) => a.slug !== slug && a.is_published)
-            .sort((a, b) => b.id - a.id)
-            .slice(0, 5)
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [slug, apiUrl]);
-
-  if (loading)
-    return <div className={styles.loading}>Accessing archive...</div>;
-  if (!article)
+  if (!articleRes.ok) {
     return <div className={styles.error}>Dossier entry not found.</div>;
+  }
+
+  const article = await articleRes.json();
+  const allData = await allRes.json();
+
+  const otherArticles = [...allData]
+    .filter((a) => a.slug !== slug && a.is_published)
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 5);
 
   return (
     <div className={styles.mainLayout}>

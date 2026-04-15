@@ -79,7 +79,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
 }
 
 /* Responsive Layout */

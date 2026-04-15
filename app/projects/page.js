@@ -1,31 +1,16 @@
-'use client'
-import { useState, useEffect } from 'react'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import styles from './projects.module.css'
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-  const [projects, setProjects] = useState([])
-  const [cv, setCv] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [projRes, cvRes] = await Promise.all([
-          fetch(`${apiUrl}/projects/`),
-          fetch(`${apiUrl}/cv/`)
-        ])
-        const projData = await projRes.json()
-        const cvData = await cvRes.json()
-        setProjects(projData)
-        setCv(cvData)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+  
+  const [projRes, cvRes] = await Promise.all([
+    fetch(`${apiUrl}/projects/`, { next: { revalidate: 0 } }),
+    fetch(`${apiUrl}/cv/`, { next: { revalidate: 0 } })
+  ])
+  
+  const projects = await projRes.json()
+  const cv = await cvRes.json()
 
   return (
     <div className={styles.container}>
@@ -35,9 +20,7 @@ export default function ProjectsPage() {
       </header>
 
       <div className={styles.grid}>
-        {loading ? (
-          <p>Scanning sectors...</p>
-        ) : projects.length > 0 ? (
+        {projects.length > 0 ? (
           projects.map(project => (
             <ProjectCard 
               key={project.id} 
